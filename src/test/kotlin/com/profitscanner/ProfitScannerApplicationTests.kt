@@ -1,7 +1,7 @@
 package com.profitscanner
 
 import com.profitscanner.web.WebConst
-import com.profitscanner.web.client.AlphaVantageService
+import com.profitscanner.web.client.AlphaVantageClient
 import com.profitscanner.web.client.StockHistory
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,7 +16,7 @@ class ProfitScannerApplicationTests {
 
 
     @Autowired
-    private lateinit var alphaVantageService: AlphaVantageService
+    private lateinit var alphaVantageClient: AlphaVantageClient
     @Autowired
     private lateinit var restClient: RestOperations
 
@@ -33,7 +33,9 @@ class ProfitScannerApplicationTests {
 
     @Test
     fun advantage() {
-      val map = alphaVantageService.stockHistory("ET")
+      val stockHistory: StockHistory = alphaVantageClient.stockHistory("ET")
+      val divEventList = alphaVantageClient.createDivEventList("ET")
+
         println()
     }
 }
